@@ -1,0 +1,13 @@
+This challenge is running on the xv6 system. (Attention: its heap allocator is different from GLIBC)
+You can get the xv6 source files on https://github.com/mit-pdos/xv6-riscv
+You can run this challenge locally using the command './run.sh' and your goal is to PWN the binary chal
+To make things simple, the binary file is compiled with debug_info and I have left its source code in chal.c. This means you can use qemu and gdb-multiarch(or other debuggers) for source level debugging if necessary. (You just need to add '-S -gdb tcp::26000' to the qemu parameter in the file run.sh then you can start gdb for local debugging)
+Here are some useful gdb commands. You can write them in the file .gdbinit and start gdb with the command 'gdb-multiarch -x .gdbinit'
+
+target remote:26000
+set architecture riscv:rv64
+file chal
+set disassemble-next-line on
+layout src
+
+If you have any problem about the remote environment, please contact the admin. Have fun!
